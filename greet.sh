@@ -1,12 +1,13 @@
-#!/bin/bash
-name=$1
+#!/usr/bin/env bash
+# Greet a user by name. Demonstrates argument handling and input validation.
+# Usage: ./greet.sh NAME
+set -euo pipefail
 
-if [ -z "$name" ]; then
-    echo "Error: please provide a name."
-    echo "Usage: ./greet.sh <name>"
-    exit 1
+if [[ $# -ne 1 || -z "$1" ]]; then
+  echo "Error: please provide exactly one name." >&2
+  echo "Usage: $0 <name>" >&2
+  exit 1
 fi
 
-echo "Hello , $name!"
+echo "Hello, $1!"
 echo "Welcome to your server."
-
